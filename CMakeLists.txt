@@ -1,9 +1,20 @@
 cmake_minimum_required(VERSION 3.0)
 # set(APP_NAME "gtool")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/dist")
-set(CMAKE_C_COMPILER "c:/mingw64/bin/gcc.exe")
-set(CMAKE_CXX_COMPILER "c:/mingw64/bin/g++.exe")
-add_link_options(-static -static-libgcc -static-libstdc++)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+if (APPLE)
+    # Điều kiện cho macOS
+elseif (WIN32)
+    add_link_options(-static -static-libgcc -static-libstdc++)
+elseif (UNIX)
+    # Điều kiện cho các hệ thống Unix như Ubuntu
+else ()
+    message(FATAL_ERROR "Unsupported operating system")
+endif ()
+
+
 
 file(GLOB_RECURSE SOURCES "src/*.cpp" CONFIGURE_DEPEND)
 file(GLOB_RECURSE HEADERS "src/*.h" CONFIGURE_DEPEND)

@@ -12,3 +12,4 @@ _deps
 target-*.json
 dist/
 build/
+*.cmake

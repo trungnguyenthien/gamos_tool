@@ -14,10 +14,8 @@ else ()
     message(FATAL_ERROR "Unsupported operating system")
 endif ()
 
-
-
-file(GLOB_RECURSE SOURCES "src/*.cpp" CONFIGURE_DEPEND)
-file(GLOB_RECURSE HEADERS "src/*.h" CONFIGURE_DEPEND)
+file(GLOB_RECURSE SOURCES "src/*/*.cpp" CONFIGURE_DEPEND)
+file(GLOB_RECURSE HEADERS "src/*/*.h" CONFIGURE_DEPEND)
 
 # project(${APP_NAME})
 # add_executable(${APP_NAME} src/main.cpp ${SOURCES} ${HEADERS})

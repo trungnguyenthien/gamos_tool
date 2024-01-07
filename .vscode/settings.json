@@ -37,7 +37,8 @@
     "stop_token": "cpp",
     "iomanip": "cpp",
     "fstream": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "iostream": "cpp"
   },
   "editor.defaultFormatter": "xaver.clang-format",
   "clang-format.style": "file",

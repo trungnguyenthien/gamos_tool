@@ -24,6 +24,7 @@ file(GLOB_RECURSE HEADERS "src/*.h" CONFIGURE_DEPEND)
 
 set(executable_sources
     src/g4_replace_structure_value.cpp
+    src/g4_gamoslog_to_cubic.cpp
 )
 # Link to cli11
 add_subdirectory(modules/cli11)

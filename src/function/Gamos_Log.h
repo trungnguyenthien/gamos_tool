@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <regex>
+#include <sstream>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -35,6 +36,12 @@ struct G4TrackRow {
     std::cout << "Step: " << Step << ", Xmm: " << Xmm << ", Ymm: " << Ymm << ", Zmm: " << Zmm << ", KinE: " << KinE << ", dE: " << dE
               << ", StepLeng: " << StepLeng << ", TrackLeng: " << TrackLeng << ", NextVolume: " << NextVolume << ", ProcName: " << ProcName
               << ", Table_Particle: " << Particle << ", Table_TrackID: " << TrackID << ", Table_ParentID: " << ParentID << std::endl;
+  }
+
+  string name() {
+    ostringstream stream;
+    stream << "* G4Track Information:   Particle = " << Particle << ",   Track ID = " << TrackID << ",   Parent ID = " << ParentID << " {Step: " << Step << "}";
+    return stream.str();
   }
 };
 

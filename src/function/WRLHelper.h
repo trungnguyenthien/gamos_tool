@@ -10,13 +10,16 @@ using namespace std;
 
 class WrlShapeCubic {
 public:
-  Color diffuseColor;
+  //   Color diffuseColor;
   string cmd = "";
   Point midPoint;
   Size3D size = Size3D(0.5);
+  string name = "";
+  WrlShapeCubic(string cmd, Point midPoint, string name) : cmd(cmd), midPoint(midPoint), name(name) {}
 
   string print() {
     ostringstream lines;
+    lines << "#---------- SOLID: cubic: " << name << endl;
     lines << "	Shape {" << endl;
     lines << "		appearance Appearance {" << endl;
     lines << "			material Material {" << endl;
@@ -31,7 +34,7 @@ public:
     lines << "			coord Coordinate {" << endl;
     lines << "				point [" << endl;
 
-    lines << pointLines;
+    lines << pointLines();
     // lines << "					-300 -100 -100," << endl;
     // lines << "					300 -100 -100," << endl;
     // lines << "					300 100 -100," << endl;
@@ -98,15 +101,16 @@ private:
 
   string pointLines() {
     Size3D s = haftSize();
+    Point p = midPoint;
     ostringstream stream;
-    stream << "					" << -s.width << " " << -s.height << " " << -s.depth << "," << endl;  // 1
-    stream << "					" << +s.width << " " << -s.height << " " << -s.depth << "," << endl;  // 2
-    stream << "					" << +s.width << " " << +s.height << " " << -s.depth << "," << endl;  // 3
-    stream << "					" << -s.width << " " << +s.height << " " << -s.depth << "," << endl;  // 4
-    stream << "					" << -s.width << " " << -s.height << " " << +s.depth << "," << endl;  // 5
-    stream << "					" << +s.width << " " << -s.height << " " << +s.depth << "," << endl;  // 6
-    stream << "					" << +s.width << " " << +s.height << " " << +s.depth << "," << endl;  // 7
-    stream << "					" << -s.width << " " << +s.height << " " << +s.depth << "," << endl;  // 8
+    stream << "					" << p.x - s.width << " " << p.y - s.height << " " << p.z - s.depth << "," << endl;  // 1
+    stream << "					" << p.x + s.width << " " << p.y - s.height << " " << p.z - s.depth << "," << endl;  // 2
+    stream << "					" << p.x + s.width << " " << p.y + s.height << " " << p.z - s.depth << "," << endl;  // 3
+    stream << "					" << p.x - s.width << " " << p.y + s.height << " " << p.z - s.depth << "," << endl;  // 4
+    stream << "					" << p.x - s.width << " " << p.y - s.height << " " << p.z + s.depth << "," << endl;  // 5
+    stream << "					" << p.x + s.width << " " << p.y - s.height << " " << p.z + s.depth << "," << endl;  // 6
+    stream << "					" << p.x + s.width << " " << p.y + s.height << " " << p.z + s.depth << "," << endl;  // 7
+    stream << "					" << p.x - s.width << " " << p.y + s.height << " " << p.z + s.depth << "," << endl;  // 8
     return stream.str();
   };
 };

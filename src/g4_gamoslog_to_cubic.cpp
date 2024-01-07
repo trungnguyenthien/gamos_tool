@@ -1,7 +1,9 @@
 #include <CLI/CLI.hpp>
 
+#include "common/Model.h"
 #include "common/StringUtils.h"
 #include "function/Gamos_Log.h"
+#include "function/WRLHelper.h"
 
 int main(int argc, char **argv) {
   CLI::App app{"---"};
@@ -23,7 +25,9 @@ int main(int argc, char **argv) {
   }
   readG4TrackTables(logFile, [](G4TrackRow *row) {
     // Print row
-    row->printDebugInfo();
+    // row->printDebugInfo();
+    WrlShapeCubic cubic(row->ProcName, Point(row->Xmm, row->Ymm, row->Zmm), row->name());
+    cout << cubic.print() << endl;
   });
 
   outputFile.close();

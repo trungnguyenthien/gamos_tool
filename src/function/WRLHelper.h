@@ -95,7 +95,7 @@ private:
     } else {
       line += "1 1 1";
     }
-
+    line += "  # " + cmd;
     return line;
   }
 

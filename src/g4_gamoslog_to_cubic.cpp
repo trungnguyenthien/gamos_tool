@@ -23,11 +23,11 @@ int main(int argc, char **argv) {
     std::cerr << "Can not write out to file:" << outFile << std::endl;
     return 1;
   }
-  readG4TrackTables(logFile, [](G4TrackRow *row) {
+  readG4TrackTables(logFile, [&outputFile](G4TrackRow *row) {
     // Print row
     // row->printDebugInfo();
     WrlShapeCubic cubic(row->ProcName, Point(row->Xmm, row->Ymm, row->Zmm), row->name());
-    cout << cubic.print() << endl;
+    outputFile << cubic.print() << endl;
   });
 
   outputFile.close();

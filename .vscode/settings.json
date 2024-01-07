@@ -38,7 +38,8 @@
     "iomanip": "cpp",
     "fstream": "cpp",
     "ostream": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "istream": "cpp"
   },
   "editor.defaultFormatter": "xaver.clang-format",
   "clang-format.style": "file",

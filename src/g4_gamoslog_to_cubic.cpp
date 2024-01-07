@@ -1,5 +1,7 @@
 #include <CLI/CLI.hpp>
+#include <sstream>
 
+#include "common/FileUtils.h"
 #include "common/Model.h"
 #include "common/StringUtils.h"
 #include "function/Gamos_Log.h"
@@ -8,28 +10,30 @@
 int main(int argc, char **argv) {
   CLI::App app{"---"};
   std::string logFile = "";
-  app.add_option("-f,--file", logFile, "Path to input log file");
+  app.add_option("-l,--log", logFile, "Path to input log file");
 
-  std::string outFile = "";
-  app.add_option("-o,--out", outFile, "Path to output file");
+  std::string wrlFile = "";
+  app.add_option("-w,--wrl", wrlFile, "Path to output file");
 
   CLI11_PARSE(app, argc, argv);
   if (logFile.empty()) {
     return 0;
   }
 
-  std::ofstream outputFile(outFile, std::ios::out);
-  if (!outputFile.is_open()) {
-    std::cerr << "Can not write out to file:" << outFile << std::endl;
-    return 1;
-  }
-  readG4TrackTables(logFile, [&outputFile](G4TrackRow *row) {
+  // std::ofstream outputFile(wrlFile, std::ios::out);
+  // if (!outputFile.is_open()) {
+  //   std::cerr << "Can not write out to file:" << wrlFile << std::endl;
+  //   return 1;
+  // }
+  ostringstream outputStream;
+  readG4TrackTables(logFile, [&outputStream](G4TrackRow *row) {
     // Print row
     // row->printDebugInfo();
     WrlShapeCubic cubic(row->ProcName, Point(row->Xmm, row->Ymm, row->Zmm), row->name());
-    outputFile << cubic.print() << endl;
+    outputStream << cubic.print() << endl;
+    // outputFile << cubic.print() << endl;
   });
-
-  outputFile.close();
+  appendAfterLine(wrlFile, logFile + ".wrl", "#End of file.", outputStream.str());
+  // outputFile.close();
   return 1;
 }

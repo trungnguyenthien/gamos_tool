@@ -13,7 +13,7 @@ public:
   //   Color diffuseColor;
   string cmd = "";
   Point midPoint;
-  Size3D size = Size3D(0.5);
+  Size3D size = Size3D(0.1);
   string name = "";
   WrlShapeCubic(string cmd, Point midPoint, string name) : cmd(cmd), midPoint(midPoint), name(name) {}
 
@@ -73,25 +73,25 @@ private:
     string line = "			diffuseColor ";
     string lower = toLowerCase(cmd);
     if (lower == toLowerCase("initStep")) {
-      line += "1 1 1";
+      line += "1 1 1";  // Màu Trắng
     } else if (lower == toLowerCase("Transportation")) {
-      line += "0 0 0";
+      line += "0 0 0";  // Màu Đen
     } else if (lower == toLowerCase("phot")) {
-      line += "0 1 0";
+      line += "0.9 0 0";  // Màu Đỏ
     } else if (lower == toLowerCase("eIoni")) {
-      line += "0 0 1";
+      line += "1 0.6 0";  // Màu Cam
     } else if (lower == toLowerCase("compt")) {
-      line += "1 0 0";
+      line += "1 1 0.5";  // Màu Vàng
     } else if (lower == toLowerCase("Rayl")) {
-      line += "1 0.9 0";
+      line += "0 1 0";  // Màu Lục
     } else if (lower == toLowerCase("CoulumbScat")) {
-      line += "0.8 0 0.7";
+      line += "0 1 1";  // Màu Lam
     } else if (lower == toLowerCase("Msc")) {
-      line += "0.6 0.3 0";
+      line += "0 0 1";  // Màu Chàm
     } else if (lower == toLowerCase("eBrem")) {
-      line += "1 0.4 0";
+      line += "0.6 0 0.5";  // Màu Tím
     } else if (lower == toLowerCase("annihil")) {
-      line += "0.6 0.1 1";
+      line += "1 0.5 0.9";  // Màu Hồng
     } else {
       line += "1 1 1";
     }

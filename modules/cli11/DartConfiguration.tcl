@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/trung/gamos_tool/modules/cli11
-BuildDirectory: /Users/trung/gamos_tool/modules/cli11
+SourceDirectory: /Users/trung/gamos_tool-1/modules/cli11
+BuildDirectory: /Users/trung/gamos_tool-1/modules/cli11
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,8 +27,8 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/local/Cellar/cmake/3.26.3/bin/cmake" "/Users/trung/gamos_tool/modules/cli11"
-MakeCommand: /usr/local/Cellar/cmake/3.26.3/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
+ConfigureCommand: "/usr/local/Cellar/cmake/3.28.1/bin/cmake" "/Users/trung/gamos_tool-1/modules/cli11"
+MakeCommand: /usr/local/Cellar/cmake/3.28.1/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control

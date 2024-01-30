@@ -13,7 +13,7 @@ public:
   //   Color diffuseColor;
   string cmd = "";
   Point midPoint;
-  Size3D size = Size3D(0.1);
+  Size3D size = Size3D(0.3);
   string name = "";
   WrlShapeCubic(string cmd, Point midPoint, string name) : cmd(cmd), midPoint(midPoint), name(name) {}
 
